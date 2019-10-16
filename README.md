@@ -8,3 +8,4 @@ CPSC 350
 
 Referenced:
 GenStack code from lecture
+Textbook

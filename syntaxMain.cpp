@@ -3,6 +3,7 @@
 #include <fstream>
 #include "Syntax.h"
 #include "syntaxGenStack.h"
+#include "fileio.h"
 
 using namespace std;
 
@@ -16,38 +17,37 @@ int main(int argc, char **argv){
   else {
     filePath = argv[1];
   }
-  //beginning of file input
-  ifstream in;
-  in.open(filePath);
-  if(!in){
-    cerr << "File not found." << endl;
-  }
-  //1. create stack holding chars/strings
+
   syntaxGenStack<char> stack(100);
   Syntax checker;
-  //syntaxGenStack stack = syntaxGenStack();
-  //2. take file input analyzed as a command line argument
-  //done above
-  //3. check syntax
-  bool check = checker.checking(in, stack);
-  if(check){
-    cout << "Found no errors. " << endl;
-  }
-  in.close();
+  fileio io;
 
-  char answer;
-  //this part checks if you want to run another file
-  cout << "Would you like to run another file? (Enter 'y' or 'n') " << endl;
-  if(answer == 'y'){
-    cout << "Enter the name of your file. ";
-    cin >> filePath;
+  while(true){
+  //beginning of file input
+  //ifstream in;
+    io.openFile(filePath);
+    bool check = checker.checking(io.in, stack);
+    io.closeFile();
+    if(check){
+      cout << "Found no errors. " << endl;
   }
-  else if (answer = 'n'){
-    return 0;
-  }
-  else{
-    cout << "Invalid entry. "<< endl;
-    return 0;
+
+
+    char answer;
+    //this part checks if you want to run another file
+    cout << "Would you like to run another file? (Enter 'y' or 'n') " << endl;
+    cin >> answer;
+    if(answer == 'y'){
+      cout << "Enter the name of your file. ";
+      cin >> filePath;
+    }
+    else if (answer = 'n'){
+      break;
+    }
+    else{
+      cout << "Invalid entry. "<< endl;
+      break;
+    }
   }
   //4. report if the syntax is okay or if an error has occurred
   //done in checking

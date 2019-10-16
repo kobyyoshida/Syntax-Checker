@@ -1,6 +1,6 @@
 //koby yoshida
-#ifndef SYNTAXFUNCTIONS_H
-#define SYNTAXFUNCTIONS_H
+#ifndef SYNTAX_H
+#define SYNTAX_H
 #include <iostream>
 #include <fstream>
 
@@ -22,7 +22,7 @@ class Syntax{
     //bool isEmpty();
     //bool isFull();
     char pop();
-
+    //syntaxGenStack<char> stack(100);
     bool checking(ifstream& file, syntaxGenStack<char>& stack);
 
   private:

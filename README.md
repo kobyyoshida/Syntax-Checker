@@ -1,12 +1,4 @@
-# assignment3
-Syntax Checker
+#Syntax Checker
+Created by Koby Yoshida
 
-Koby Yoshida
-10002441
-koyoshida@chapman.edu
-CPSC 350
-
-Referenced:
-GenStack code from lecture
-
-Textbook
+Run your code as a text file argument to check for matching parenthesis, brackets, quotation marks and curly braces. Application ignores comment statements. Will return an error if there is a symbol with an unmatched pair.
